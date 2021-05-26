@@ -16,7 +16,7 @@ namespace LkwdScoopScraping.Scraping
             var html = GetScoopHtml();
             var parser = new HtmlParser();
             var document = parser.ParseDocument(html);
-            IHtmlCollection<IElement> searchResultElements = document.QuerySelectorAll("#content");
+            IHtmlCollection<IElement> searchResultElements = document.QuerySelectorAll(".post");
             foreach (IElement result in searchResultElements)
             {
                 var ScoopResult = new ScoopResult();
@@ -31,7 +31,8 @@ namespace LkwdScoopScraping.Scraping
                     ScoopResult.ImageUrl = imageSrcValue;
                 }
 
-                ScoopResult.Blurb = result.QuerySelector("a.fancybox").TextContent;
+                //ScoopResult.Blurb = result.QuerySelector("a.fancybox").TextContent;
+                ScoopResult.Blurb = result.QuerySelector("p").TextContent.Replace("Read more ›", "");
 
                 string commentCountString = result.QuerySelector("div.backtotop").TextContent;
                 string commentCountDigits = String.Join("", commentCountString.Where(char.IsDigit));
@@ -53,7 +54,7 @@ namespace LkwdScoopScraping.Scraping
             {
                 AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate
             };
-            string url = $"https://www.lakewoodscoop.com";
+            string url = $"https://www.thelakewoodscoop.com";
             var client = new HttpClient(handler);
             var html = client.GetStringAsync(url).Result;
             return html;

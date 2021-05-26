@@ -23,17 +23,17 @@ const ScoopScraper = () => {
 
             <div className="row">
                 <div className="col-md-12">
-                        {results.map(p => <div className="card">
-                            if (p.imageUrl) {
-                                <img className="card-img-top" src={ p.imageUrl} alt="Card image cap"></img>
-                            } 
-                            <div className="card-body">
-                                <h5 className="card-title" href={ p.linkUrl}>{p.title}</h5>
+                    {results.map(p => <div className="card">
+                        <img className="card-img-top" src={p.imageUrl} alt="Card image cap"></img>
+                        <div className="card-body">
+                            <a href={p.linkUrl} target="_blank">
+                                <h5 className="card-title">{p.title}</h5>
+                             </a>
                                 <p className="card-text">{ p.blurb}</p>
                                 <p className="card-text text-info">
                                     <span>{p.commentCount != 0
-                                        ? p.commentCount
-                                        : 'no'
+                                        ? `${p.commentCount} `
+                                        : 'No '
                                     }</span>
                                     Comments
                                 </p>
