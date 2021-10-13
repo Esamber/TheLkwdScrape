@@ -22,7 +22,7 @@ namespace LkwdScoopScraping.Scraping
                 var ScoopResult = new ScoopResult();
 
                 ScoopResult.Title = result.QuerySelector("h2").TextContent;
-                ScoopResult.LinkUrl = result.QuerySelector("a.more-link").Attributes["href"].Value;
+                ScoopResult.LinkUrl = result.QuerySelector("a").Attributes["href"].Value;
 
                 var imageElement = result.QuerySelector("img");
                 if (imageElement != null)

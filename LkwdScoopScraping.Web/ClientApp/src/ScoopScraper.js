@@ -4,7 +4,7 @@ import axios from 'axios';
 const ScoopScraper = () => {
     const [results, setResults] = useState([]);
 
-    useEffect(() => {
+     useEffect(() => {
         const searchScoop = async () => {
             const { data } = await axios.get(`/api/scraper/scrape`);
             setResults(data);
@@ -16,9 +16,9 @@ const ScoopScraper = () => {
     return (
         <div className="container" style={{ marginTop: 60 }}>
             <div className="jumbotron">
-                <h1 class="display-4 text-center">The Lakewood Scrape</h1>
-                <hr class="my-4 text-center"/>
-                <h3 class="lead text-center">Everything you need to see, nothing you don't!</h3>
+                <h1 className="display-4 text-center">The Lakewood Scrape</h1>
+                <hr className="my-4 text-center"/>
+                <h3 className="lead text-center">Everything you need to see, nothing you don't!</h3>
             </div>
 
             <div className="row">
